@@ -49,7 +49,7 @@ export default function Navbar() {
                     {/* CTA Button */}
                     <motion.button
                         whileHover="hover"
-                        initial="initial"back
+                        initial="initial"
                         className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
                     >
                         {/* Corner Animations */}

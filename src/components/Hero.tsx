@@ -8,78 +8,132 @@ export default function Hero() {
         <section className="relative w-full min-h-screen bg-[#01010d] text-white overflow-hidden flex flex-col items-center justify-center py-20" style={{ fontFamily: '"IBM Plex Sans", "IBM Plex Sans Placeholder", sans-serif' }}>
 
             {/* Radial Light */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#50508a]/20 rounded-full blur-[100px] z-0 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#50508a]/20 rounded-full blur-[80px] z-0 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[100px] z-0 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/[0.05] rounded-full blur-[80px] z-0 pointer-events-none" />
 
             {/* Dot Pattern (Subtle) */}
-            <div className="absolute inset-0 bg-[radial-gradient(#50508a_1px,transparent_1px)] bg-[size:14px_14px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] z-0 pointer-events-none" />
+
+
+            {/* Background Image */}
+            <div
+                style={{
+                    position: 'absolute',
+                    borderRadius: 'inherit',
+                    // @ts-ignore
+                    cornerShape: 'inherit',
+                    inset: '0px'
+                }}
+            >
+                <div
+                    style={{
+                        filter: 'grayscale(1)',
+                        opacity: 0.4,
+                        pointerEvents: 'none',
+                        zIndex: 0,
+                        flex: 'none',
+                        width: '2458px',
+                        height: '1701px',
+                        position: 'absolute',
+                        top: 'calc(55.75% - 850.5px)',
+                        left: 'calc(50% - 1229px)'
+                    }}
+                >
+                    <img
+                        decoding="auto"
+                        src="/images/download.avif"
+                        alt=""
+                        style={{
+                            display: 'block',
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: 'inherit',
+                            // @ts-ignore
+                            cornerShape: 'inherit',
+                            objectPosition: 'center center',
+                            objectFit: 'contain'
+                        }}
+                    />
+                </div>
+            </div>
+
+            {/* Vignette Overlay */}
+            <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(75% 64% at 50% 50%, #fff0 17.5676%, #01010d 100%)' }} />
+
+            {/* Dot Pattern (Subtle) */}
+            <div className="absolute inset-0 bg-[radial-gradient(rgba(80,80,138,0.2)_1px,transparent_1px)] bg-[size:5px_5px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] z-0 pointer-events-none" />
 
             {/* Floating UI Elements Container */}
             <div className="absolute inset-0 w-full h-full overflow-hidden z-10 pointer-events-none">
 
-                {/* Element 1: Workflow Card (Top Left) */}
-                <motion.div
-                    className="absolute top-[15%] left-[10%] md:left-[15%] p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md opacity-60 w-64"
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-                >
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <div className="space-y-1">
-                            <div className="h-2 w-24 bg-white/20 rounded"></div>
-                            <div className="h-2 w-16 bg-white/10 rounded"></div>
-                        </div>
-                    </div>
-                </motion.div>
 
-                {/* Element 2: Code Snippet (Bottom Right) */}
-                <motion.div
-                    className="absolute bottom-[20%] right-[10%] md:right-[15%] p-4 rounded-lg border border-white/5 bg-black/60 backdrop-blur-sm opacity-50 font-mono text-xs text-gray-400"
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, delay: 3 }}
-                >
-                    <p><span className="text-blue-400">const</span> <span className="text-purple-400">agent</span> = <span className="text-yellow-400">new</span> VoidAI();</p>
-                    <p className="mt-1"><span className="text-purple-400">agent</span>.connect(<span className="text-green-400">'scale'</span>);</p>
-                    <p className="mt-1 text-green-500">// Connected successfully</p>
-                </motion.div>
+
+
 
                 {/* Element 3: Message Bubble (Top Right) */}
+                {/* Google Meet Card */}
                 <motion.div
-                    className="absolute top-[20%] right-[20%] md:right-[25%] flex items-start gap-3 opacity-40"
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+                    className="absolute bottom-[30%] left-[5%] md:left-[10%] flex flex-col md:flex-row items-end w-[303px] gap-2 opacity-90 z-20"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
                 >
-                    <div className="w-8 h-8 rounded-full bg-gray-800 border border-gray-700"></div>
-                    <div className="p-3 rounded-2xl rounded-tl-none border border-white/10 bg-white/5 backdrop-blur-md max-w-[200px]">
-                        <p className="text-xs text-gray-300">Set up a Google Meet with Jordan at 2:00 PM...</p>
+                    {/* Text Box */}
+                    <div className="relative group p-3 md:p-4 rounded-lg border border-white/10 bg-[#181825]/60 backdrop-blur-md max-w-[220px]">
+                        {/* Corner Animations */}
+                        <motion.div className="absolute -top-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -top-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -bottom-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -bottom-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
+                        <p className="text-xs md:text-sm text-gray-300 leading-relaxed font-light">Set up a Google Meet with Twarimitswe at 2:00 PM on Thursday.</p>
+                    </div>
+
+                    {/* Icon Box */}
+                    <div className="relative group flex flex-col items-center gap-2 p-2 rounded-lg border border-white/10 bg-[#181825]/80 backdrop-blur-md">
+                        {/* Corner Animations */}
+                        <motion.div className="absolute -top-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -top-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -bottom-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        <motion.div className="absolute -bottom-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
+                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
+                        {/* User Icon */}
+                        <div className="w-8 h-8 flex items-center justify-center text-white bg-white/5 rounded-full">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                        </div>
+                        {/* Dots */}
+                        <div className="flex flex-col gap-1">
+                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
+                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
+                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
+                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
+                        </div>
                     </div>
                 </motion.div>
 
-                {/* Element 4: Floating Badge (Bottom Left) */}
-                <motion.div
-                    className="absolute bottom-[30%] left-[20%] flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md opacity-40"
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-                >
-                    <div className="relative w-4 h-4 flex items-center justify-center">
-                        <motion.div
-                            className="absolute w-full h-full bg-[rgba(240,240,255,0.5)] rounded-full"
-                            animate={{ scale: [1, 2, 3], opacity: [0, 0.8, 0] }}
-                            transition={{ duration: 4, times: [0, 0.1, 0.2], ease: "easeOut", repeat: Infinity }}
-                        />
-                        <motion.div
-                            className="absolute w-full h-full bg-[rgba(240,240,255,0.3)] rounded-full"
-                            animate={{ scale: [1, 2, 3], opacity: [0, 0.8, 0] }}
-                            transition={{ duration: 4, times: [0.05, 0.15, 0.25], ease: "easeOut", repeat: Infinity }}
-                        />
-                        <div className="relative w-2.5 h-2.5 bg-[rgb(240,240,255)] rounded-full shadow-[0_0_10px_rgba(240,240,255,0.8)]"></div>
-                    </div>
-                    <span className="text-xs text-gray-400 tracking-wide font-mono">SYSTEM ACTIVE</span>
-                </motion.div>
+
 
                 {/* Abstract Lines */}
                 <div className="absolute top-1/2 left-[10%] w-[1px] h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
@@ -88,13 +142,7 @@ export default function Hero() {
 
             {/* Main Content */}
             <div className="relative z-20 flex flex-col items-center text-center max-w-6xl px-4 space-y-10">
-
-                <div className="flex flex-wrap justify-center items-center gap-4 mb-4">
-                    <div className="relative px-3 py-1 border-y border-[#181825] bg-[#01010d] text-[11px] font-medium tracking-wide flex items-center gap-2 text-gray-300">
-                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
-                        Custom AI Agents {'</>'}
-                        <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
-                    </div>
+                <div>
                     <div className="relative px-4 py-2 border border-[#181825] bg-[#01010d] text-xs md:text-sm text-white font-medium tracking-wide flex items-center gap-2">
                         {/* Left Border */}
                         <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_20px_#f0f0ff] z-20"></div>
@@ -110,11 +158,22 @@ export default function Hero() {
                                 animate={{ scale: [0, 2.5], opacity: [0, 1, 0] }}
                                 transition={{ duration: 4, ease: "linear", repeat: Infinity, delay: 2 }}
                             />
+                            <div className="relative w-2 h-2 bg-[rgb(240,240,255)] rounded-full shadow-[0_0_8px_rgba(240,240,255,0.8)]"></div>
                         </div>
                         <span className="uppercase">AI AUTOMATION FOR BUSINESSES</span>
 
                         {/* Right Border */}
                         <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_20px_#f0f0ff] z-20"></div>
+                    </div>
+
+                </div>
+
+
+                <div className="flex flex-wrap items-start justify-between w-full">
+                    <div className="relative px-3 py-1 border-y border-[#181825] bg-[#01010d] text-[11px] tracking-wide flex items-center gap-2 text-gray-300">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
+                        Custom AI Agents {'</>'}
+                        <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
                     </div>
                     <div className="relative px-3 py-1 border-y border-[#181825] bg-[#01010d] text-[11px] font-medium tracking-wide flex items-center gap-2 text-gray-300">
                         <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
@@ -173,10 +232,6 @@ export default function Hero() {
                         {/* Inner Active Container (Compact) */}
                         <div className="absolute inset-0 m-auto w-[75%] h-[75%]">
                             {/* Active Borders - 4 Layers */}
-                            {/* <div className="absolute inset-0 border border-[#181825] z-10 transition-colors group-hover:border-[#2a2a40]"></div>
-                            <div className="absolute inset-[1px] border border-[#181825]/80 z-10 transition-colors group-hover:border-[#2a2a40]/80"></div>
-                            <div className="absolute inset-[2px] border border-[#181825]/60 z-10 transition-colors group-hover:border-[#2a2a40]/60"></div>
-                            <div className="absolute inset-[3px] border border-[#181825]/40 z-10 transition-colors group-hover:border-[#2a2a40]/40"></div> */}
 
                             {/* Main Background & Logo */}
                             <div
@@ -199,7 +254,7 @@ export default function Hero() {
 
                     {/* Wordmark */}
                     <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
-                        Aaron
+                        Twarimitswe
                     </h1>
                 </div>
 

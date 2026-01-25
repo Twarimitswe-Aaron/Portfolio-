@@ -5,16 +5,14 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
     return (
-        <section className="relative w-full min-h-screen bg-[#020202] text-white overflow-hidden flex flex-col items-center justify-center py-20">
-            {/* Background Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-black z-0" />
+        <section className="relative w-full min-h-screen bg-[#01010d] text-white overflow-hidden flex flex-col items-center justify-center py-20" style={{ fontFamily: '"IBM Plex Sans", "IBM Plex Sans Placeholder", sans-serif' }}>
 
             {/* Radial Light */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[100px] z-0 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/[0.05] rounded-full blur-[80px] z-0 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#50508a]/20 rounded-full blur-[100px] z-0 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#50508a]/20 rounded-full blur-[80px] z-0 pointer-events-none" />
 
-            {/* Grid Pattern (Subtle) */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] z-0 pointer-events-none" />
+            {/* Dot Pattern (Subtle) */}
+            <div className="absolute inset-0 bg-[radial-gradient(#50508a_1px,transparent_1px)] bg-[size:14px_14px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] z-0 pointer-events-none" />
 
             {/* Floating UI Elements Container */}
             <div className="absolute inset-0 w-full h-full overflow-hidden z-10 pointer-events-none">
@@ -65,15 +63,20 @@ export default function Hero() {
                 <motion.div
                     className="absolute bottom-[30%] left-[20%] flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md opacity-40"
                     animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, delay: 4 }}
+                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
                 >
                     <div className="relative w-4 h-4 flex items-center justify-center">
                         <motion.div
                             className="absolute w-full h-full bg-[rgba(240,240,255,0.5)] rounded-full"
-                            animate={{ scale: [1, 2], opacity: [0.5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                            animate={{ scale: [1, 2, 3], opacity: [0, 0.8, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2], ease: "easeOut", repeat: Infinity }}
                         />
-                        <div className="relative w-4 h-4 bg-[rgb(240,240,255)] rounded-full shadow-[0_0_10px_rgba(240,240,255,0.8)]"></div>
+                        <motion.div
+                            className="absolute w-full h-full bg-[rgba(240,240,255,0.3)] rounded-full"
+                            animate={{ scale: [1, 2, 3], opacity: [0, 0.8, 0] }}
+                            transition={{ duration: 4, times: [0.05, 0.15, 0.25], ease: "easeOut", repeat: Infinity }}
+                        />
+                        <div className="relative w-2.5 h-2.5 bg-[rgb(240,240,255)] rounded-full shadow-[0_0_10px_rgba(240,240,255,0.8)]"></div>
                     </div>
                     <span className="text-xs text-gray-400 tracking-wide font-mono">SYSTEM ACTIVE</span>
                 </motion.div>
@@ -86,26 +89,40 @@ export default function Hero() {
             {/* Main Content */}
             <div className="relative z-20 flex flex-col items-center text-center max-w-6xl px-4 space-y-10">
 
-                {/* Floating Navigation Labels */}
-                <div className="flex flex-wrap justify-center gap-4 mb-4">
-                    <div className="px-4 py-1.5 border border-white/10 bg-transparent text-xs md:text-sm text-gray-400 font-medium tracking-wide">
+                <div className="flex flex-wrap justify-center items-center gap-4 mb-4">
+                    <div className="relative px-3 py-1 border-y border-[#181825] bg-[#01010d] text-[11px] font-medium tracking-wide flex items-center gap-2 text-gray-300">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
                         Custom AI Agents {'</>'}
+                        <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
                     </div>
                     <div className="relative px-4 py-2 border border-[#181825] bg-[#01010d] text-xs md:text-sm text-white font-medium tracking-wide flex items-center gap-2">
                         {/* Left Border */}
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#b8b8ff]"></div>
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_20px_#f0f0ff] z-20"></div>
 
-                        <span className="text-white">•</span>
+                        <div className="relative w-3 h-3 flex items-center justify-center">
+                            <motion.div
+                                className="absolute w-full h-full bg-[rgba(240,240,255,0.5)] rounded-full shadow-[0_0_15px_#f0f0ff]"
+                                animate={{ scale: [0, 2.5], opacity: [0, 1, 0] }}
+                                transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+                            />
+                            <motion.div
+                                className="absolute w-full h-full bg-[rgba(240,240,255,0.3)] rounded-full shadow-[0_0_15px_#f0f0ff]"
+                                animate={{ scale: [0, 2.5], opacity: [0, 1, 0] }}
+                                transition={{ duration: 4, ease: "linear", repeat: Infinity, delay: 2 }}
+                            />
+                        </div>
                         <span className="uppercase">AI AUTOMATION FOR BUSINESSES</span>
 
                         {/* Right Border */}
-                        <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#b8b8ff]"></div>
+                        <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_20px_#f0f0ff] z-20"></div>
                     </div>
-                    <div className="px-4 py-1.5 border border-white/10 bg-transparent text-xs md:text-sm text-gray-400 font-medium tracking-wide flex items-center gap-2">
+                    <div className="relative px-3 py-1 border-y border-[#181825] bg-[#01010d] text-[11px] font-medium tracking-wide flex items-center gap-2 text-gray-300">
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
                         Automated Workflows
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
+                        <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-[#f0f0ff] shadow-[0_0_15px_#f0f0ff] z-20"></div>
                     </div>
                 </div>
 
@@ -119,8 +136,8 @@ export default function Hero() {
                         {/* Decor: Corners (Outer) */}
                         <motion.div
                             className="absolute -top-2 -left-2 w-2 h-2 z-20"
-                            animate={{ x: [0, -4, -4, 0, 0], y: [0, -4, -4, 0, 0] }}
-                            transition={{ duration: 4, times: [0, 0.1, 0.5, 0.6, 1], ease: "easeInOut", repeat: Infinity }}
+                            animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
                         >
                             <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
                             <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
@@ -128,8 +145,8 @@ export default function Hero() {
 
                         <motion.div
                             className="absolute -top-2 -right-2 w-2 h-2 z-20"
-                            animate={{ x: [0, 4, 4, 0, 0], y: [0, -4, -4, 0, 0] }}
-                            transition={{ duration: 4, times: [0, 0.1, 0.5, 0.6, 1], ease: "easeInOut", repeat: Infinity }}
+                            animate={{ x: [0, 4, 0, 0], y: [0, -4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
                         >
                             <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
                             <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
@@ -137,8 +154,8 @@ export default function Hero() {
 
                         <motion.div
                             className="absolute -bottom-2 -left-2 w-2 h-2 z-20"
-                            animate={{ x: [0, -4, -4, 0, 0], y: [0, 4, 4, 0, 0] }}
-                            transition={{ duration: 4, times: [0, 0.1, 0.5, 0.6, 1], ease: "easeInOut", repeat: Infinity }}
+                            animate={{ x: [0, -4, 0, 0], y: [0, 4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
                         >
                             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
                             <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
@@ -146,8 +163,8 @@ export default function Hero() {
 
                         <motion.div
                             className="absolute -bottom-2 -right-2 w-2 h-2 z-20"
-                            animate={{ x: [0, 4, 4, 0, 0], y: [0, 4, 4, 0, 0] }}
-                            transition={{ duration: 4, times: [0, 0.1, 0.5, 0.6, 1], ease: "easeInOut", repeat: Infinity }}
+                            animate={{ x: [0, 4, 0, 0], y: [0, 4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
                         >
                             <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
                             <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
@@ -162,7 +179,13 @@ export default function Hero() {
                             <div className="absolute inset-[3px] border border-[#181825]/40 z-10 transition-colors group-hover:border-[#2a2a40]/40"></div> */}
 
                             {/* Main Background & Logo */}
-                            <div className="relative w-full h-full bg-[#01010d] flex items-center justify-center overflow-hidden z-0">
+                            <div
+                                className="relative w-full h-full bg-[#01010d] flex items-center justify-center overflow-hidden z-0"
+                                style={{
+                                    boxShadow: "rgba(80, 80, 138, 0.73) 0px 0.706592px 0.706592px -0.666667px, rgba(80, 80, 138, 0.71) 0px 1.80656px 1.80656px -1.33333px, rgba(80, 80, 138, 0.68) 0px 3.62176px 3.62176px -2px, rgba(80, 80, 138, 0.62) 0px 6.8656px 6.8656px -2.66667px, rgba(80, 80, 138, 0.49) 0px 13.6468px 13.6468px -3.33333px, rgba(80, 80, 138, 0.19) 0px 30px 30px -4px",
+                                    opacity: 1
+                                }}
+                            >
                                 {/* Logo Image - pure CSS construction */}
                                 <div className="relative z-10 w-[55%] h-[55%] bg-white flex items-center justify-center">
                                     <div className="w-[50%] h-[50%] bg-[#01010d]"></div>
@@ -170,7 +193,7 @@ export default function Hero() {
                             </div>
 
                             {/* Bottom Glow/Border - Moved outside to glow downwards */}
-                            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#b8b8ff] shadow-[0_5px_20px_rgba(184,184,255,0.8)] z-20 overflow-hidden"></div>
+                            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#f0f0ff] shadow-[0_9px_20px_#f0f0ff] z-20 overflow-hidden"></div>
                         </div>
                     </div>
 
@@ -187,30 +210,190 @@ export default function Hero() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-6 mt-4 w-full justify-center">
-                    <button className="group relative px-8 py-4 bg-[#0a0a0a] border border-white/20 text-white rounded-lg overflow-hidden transition-all hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                        <div className="absolute inset-0 bg-white/5 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <motion.button
+                        whileHover="hover"
+                        initial="initial"
+                        className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
+                    >
+
+                        {/* Corner Animations */}
+                        {/* Top Left */}
+                        <motion.div
+                            className="absolute -top-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Top Right */}
+                        <motion.div
+                            className="absolute -top-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Left */}
+                        <motion.div
+                            className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Right */}
+                        <motion.div
+                            className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
                         <span className="relative flex items-center justify-center gap-3 font-medium text-lg">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.13 8.13 0 01-7.89-6.316C2.26 12.016 4.965 7 9.5 7h4c4.535 0 7.24 5.016 4.39 6.684A8.13 8.13 0 0121 12z"></path></svg>
-                            Book A Call
+                            Hire Engineer
                         </span>
-                    </button>
+                    </motion.button>
 
-                    <button className="px-8 py-4 bg-transparent border border-white/10 text-gray-300 rounded-lg transition-all hover:bg-white/5 hover:text-white hover:border-white/30 font-medium text-lg flex items-center justify-center gap-3">
+                    <motion.button
+                        whileHover="hover"
+                        initial="initial"
+                        className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
+                    >
+                        {/* Corner Animations */}
+                        {/* Top Left */}
+                        <motion.div
+                            className="absolute -top-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Top Right */}
+                        <motion.div
+                            className="absolute -top-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Left */}
+                        <motion.div
+                            className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Right */}
+                        <motion.div
+                            className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                         Our Services
-                    </button>
-                </div>
-            </div>
-
-            {/* Bottom Badges (Right Corner) */}
-            <div className="absolute bottom-6 right-6 z-20 flex flex-col items-end gap-3 pointer-events-none">
-                <div className="pointer-events-auto px-4 py-2 rounded-lg bg-[#111] border border-white/10 flex items-center gap-3 cursor-pointer hover:bg-[#1a1a1a] transition-colors group">
-                    <span className="text-xs text-gray-400 font-medium group-hover:text-white transition-colors">Our Latest Free Template</span>
-                    <svg className="w-3 h-3 text-gray-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-                <div className="pointer-events-auto px-3 py-1.5 rounded bg-white text-black text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
-                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 12L12 24L0 12L12 0Z" /></svg>
-                    Made in Framer
+                    </motion.button>
                 </div>
             </div>
         </section>

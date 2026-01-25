@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,94 @@ export default function Navbar() {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="hidden md:flex items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] hover:border-opacity-80 text-white">
+                    {/* CTA Button */}
+                    <motion.button
+                        whileHover="hover"
+                        initial="initial"back
+                        className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
+                    >
+                        {/* Corner Animations */}
+                        {/* Top Left */}
+                        <motion.div
+                            className="absolute -top-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Top Right */}
+                        <motion.div
+                            className="absolute -top-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, -4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Left */}
+                        <motion.div
+                            className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, -4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+                        {/* Bottom Right */}
+                        <motion.div
+                            className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
+                            variants={{
+                                initial: { opacity: 0, x: 0, y: 0 },
+                                hover: {
+                                    opacity: 1,
+                                    x: [0, 4, 0, 0],
+                                    y: [0, 4, 0, 0],
+                                    transition: {
+                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
+                                        opacity: { duration: 0.2 }
+                                    }
+                                }
+                            }}
+                        >
+                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
                         <svg
                             className="w-4 h-4"
                             fill="none"
@@ -60,7 +148,7 @@ export default function Navbar() {
                             />
                         </svg>
                         Hire Engineer
-                    </button>
+                    </motion.button>
 
                     {/* Mobile Menu Button */}
                     <button

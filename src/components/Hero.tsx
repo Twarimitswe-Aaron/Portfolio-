@@ -1,15 +1,69 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
+    const [showDuplicate, setShowDuplicate] = useState(false);
+    const [showStar, setShowStar] = useState(false);
+    const [showDots, setShowDots] = useState(false);
+
+    useEffect(() => {
+        const runAnimationCycle = () => {
+            // 1. Start: Star and Dots appear
+            setShowStar(true);
+            setShowDots(true);
+
+            // 2. Dots disappear, Card appears (after 1s)
+            const cardTimer = setTimeout(() => {
+                setShowDots(false);
+                setShowDuplicate(true);
+            }, 1000);
+
+            // 3. Card disappears (after 3s total time, 2s visible)
+            const hideCardTimer = setTimeout(() => {
+                setShowDuplicate(false);
+            }, 3000);
+
+            // 4. Star disappears (after 3.5s)
+            const hideStarTimer = setTimeout(() => {
+                setShowStar(false);
+            }, 3500);
+
+            return { cardTimer, hideCardTimer, hideStarTimer };
+        };
+
+        const initialTimer = setTimeout(() => {
+            let timers = runAnimationCycle();
+
+            // Loop every 5 seconds
+            const loopInterval = setInterval(() => {
+                timers = runAnimationCycle();
+            }, 5000);
+
+            return () => {
+                if (timers) {
+                    clearTimeout(timers.cardTimer);
+                    clearTimeout(timers.hideCardTimer);
+                    clearTimeout(timers.hideStarTimer);
+                }
+                clearInterval(loopInterval);
+            };
+        }, 1000);
+
+        return () => clearTimeout(initialTimer);
+    }, []);
+
     return (
         <section className="relative w-full min-h-screen bg-[#01010d] text-white overflow-hidden flex flex-col items-center justify-center py-20" style={{ fontFamily: '"IBM Plex Sans", "IBM Plex Sans Placeholder", sans-serif' }}>
 
-            {/* Radial Light */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-[100px] z-0 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/[0.05] rounded-full blur-[80px] z-0 pointer-events-none" />
+            {/* Radial Light - Deep Blue Power */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#02021a]/40 rounded-full blur-[100px] z-0 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#01010d]/80 rounded-full blur-[80px] z-0 pointer-events-none" />
+
+            {/* Center Power Glow (New) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[1000px] max-h-[1000px] opacity-100 z-0 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at 50% 50%, #01010d 0%, transparent 60%)' }} />
 
             {/* Dot Pattern (Subtle) */}
 
@@ -59,89 +113,213 @@ export default function Hero() {
             {/* Vignette Overlay */}
             <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(75% 64% at 50% 50%, #fff0 17.5676%, #01010d 100%)' }} />
 
+            {/* Additional Dark Overlay (Step 579) */}
+            <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 3, background: 'radial-gradient(75% 64% at 50% 50%, #fff0 17.5676%, #04070d 100%)' }} />
+
             {/* Dot Pattern (Subtle) */}
             <div className="absolute inset-0 bg-[radial-gradient(rgba(80,80,138,0.2)_1px,transparent_1px)] bg-[size:5px_5px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] z-0 pointer-events-none" />
 
             {/* Floating UI Elements Container */}
             <div className="absolute inset-0 w-full h-full overflow-hidden z-10 pointer-events-none">
 
-
-
-
-
-                {/* Element 3: Message Bubble (Top Right) */}
-                {/* Google Meet Card */}
+                {/* Floating Icons Row (Top Right) */}
                 <motion.div
-                    className="absolute bottom-[30%] left-[5%] md:left-[10%] flex flex-col md:flex-row items-end w-[303px] gap-2 opacity-90 z-20"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+                    className="absolute top-64 right-[10%] flex gap-6 z-0 opacity-60"
+                    animate={{ x: [-20, 20, -20] }}
+                    transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
                 >
-                    {/* Text Box */}
-                    <div className="relative group p-3 md:p-4 rounded-lg border border-white/10 bg-[#181825]/60 backdrop-blur-md max-w-[220px]">
-                        {/* Corner Animations */}
-                        <motion.div className="absolute -top-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -top-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -bottom-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -bottom-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-
-                        <p className="text-xs md:text-sm text-gray-300 leading-relaxed font-light">Set up a Google Meet with Twarimitswe at 2:00 PM on Thursday.</p>
+                    {/* Mail */}
+                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
+                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
+                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
+                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
+                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                     </div>
-
-                    {/* Icon Box */}
-                    <div className="relative group flex flex-col items-center gap-2 p-2 rounded-lg border border-white/10 bg-[#181825]/80 backdrop-blur-md">
-                        {/* Corner Animations */}
-                        <motion.div className="absolute -top-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -top-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, -4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -bottom-1 -left-1 w-2 h-2 z-20" animate={{ x: [0, -4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        <motion.div className="absolute -bottom-1 -right-1 w-2 h-2 z-20" animate={{ x: [0, 4, 0, 0], y: [0, 4, 0, 0] }} transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}>
-                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-
-                        {/* User Icon */}
-                        <div className="w-8 h-8 flex items-center justify-center text-white bg-white/5 rounded-full">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                        </div>
-                        {/* Dots */}
-                        <div className="flex flex-col gap-1">
-                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
-                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
-                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
-                            <div className="w-1 h-1 rounded-full bg-[#50508a]"></div>
-                        </div>
+                    {/* Figma */}
+                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
+                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
+                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
+                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
+                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
+                        </svg>
+                    </div>
+                    {/* Notion */}
+                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
+                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
+                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
+                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
+                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
+                        </svg>
+                    </div>
+                    {/* Spiral/Orb */}
+                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
+                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
+                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
+                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
+                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
+                        </svg>
                     </div>
                 </motion.div>
 
+                {/* Google Meet Card (Relocated Position) */}
+                <div
+                    className="absolute top-[calc(50%-100px)] left-[calc(50%-550px)] flex flex-row items-end w-[300px] gap-2 opacity-90 z-20"
+                >
+                    {/* Framer Wrapper */}
+                    <div className="flex flex-row items-end h-full w-full gap-2">
+                        {/* Text Container */}
+                        <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
+                            <div
+                                className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2  bg-[#181825]/60"
+                                style={{
+                                    borderWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: 'rgba(40, 40, 61, 0.8)'
+                                }}
+                            >
+                                <div className="opacity-70 transform-none">
+                                    <p className="text-xs text-[#0099ff]  decoration-[#0099ff] leading-relaxed">
+                                        <span className="text-gray-300 ">Set up a Google Meet with Aaron at 2:00 PM on Thursday.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Icon Box */}
+                        <div
+                            className="relative my-auto flex  items-center gap-1.5 p-2  bg-[#181825]/80 backdrop-blur-md opacity-100 transform-none"
+                            style={{
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                                borderColor: 'rgb(24, 24, 37)'
+                            }}
+                        >
+                            {/* Icon */}
+                            <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
 
 
-                {/* Abstract Lines */}
-                <div className="absolute top-1/2 left-[10%] w-[1px] h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                <div className="absolute bottom-[20%] right-[30%] w-32 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Animated Duplicate Group (Flex Container with Fixed Width Star) */}
+                <div className="absolute top-[calc(50%-20px)] left-[calc(50%-610px)] flex flex-row items-center gap-0 z-10 pointer-events-none">
+
+                    {/* Fixed Width Star Container (Reserves Space) */}
+                    <div className="relative w-[60px] h-10 flex-shrink-0 flex items-center justify-center">
+                        {/* Animated Star Decoration */}
+                        <AnimatePresence>
+                            {showStar && (
+                                <motion.div
+                                    key="star-decor"
+                                    initial={{ scale: 0, opacity: 0, rotate: -45 }}
+                                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                                    exit={{ scale: 0, opacity: 0, rotate: 45, transition: { duration: 0.3 } }}
+                                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                                    className="relative w-10 h-10 -top-[4px]"
+                                >
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 0L14 9L23 12L14 15L12 24L10 15L1 12L10 9L12 0Z" fill="#f0f0ff" fillOpacity="0.8" />
+                                    </svg>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Loading Dots (Progressing) */}
+                        <AnimatePresence>
+                            {showDots && (
+                                <motion.div
+                                    key="loading-dots"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                                    className="absolute -right-8 top-1/2 -translate-y-1/2 flex gap-1.5 items-center"
+                                >
+                                    {[0, 1, 2].map((i) => (
+                                        <motion.div
+                                            key={i}
+                                            className="w-1.5 h-1.5 bg-gray-300 rounded-full"
+                                            animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.2, 1] }}
+                                            transition={{
+                                                duration: 1.2,
+                                                repeat: Infinity,
+                                                ease: "easeInOut",
+                                                delay: i * 0.15
+                                            }}
+                                        />
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Duplicate Google Meet Card (Animated) */}
+                    <AnimatePresence>
+                        {showDuplicate && (
+                            <motion.div
+                                key="duplicate-card"
+                                initial={{ y: 40, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: 20, opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
+                                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                                className="relative flex flex-row items-end w-[300px] gap-2 ml-4"
+                            >
+                                {/* Framer Wrapper */}
+                                <div className="flex flex-row items-end h-full w-full gap-2">
+                                    {/* Text Container */}
+                                    <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
+                                        <div
+                                            className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-[#181825]/60"
+                                            style={{
+                                                borderWidth: '1px',
+                                                borderStyle: 'solid',
+                                                borderColor: 'rgba(40, 40, 61, 0.8)'
+                                            }}
+                                        >
+                                            <div className="opacity-70 transform-none">
+                                                <p className="text-xs text-[#0099ff] decoration-[#0099ff] leading-relaxed">
+                                                    <span className="text-gray-300">Set up a Google Meet with Aaron at 2:00 PM on Thursday.</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Icon Box */}
+                                    <div
+                                        className="relative my-auto flex items-center gap-1.5 p-2 bg-[#181825]/80 backdrop-blur-md opacity-100 transform-none"
+                                        style={{
+                                            borderWidth: '1px',
+                                            borderStyle: 'solid',
+                                            borderColor: 'rgb(24, 24, 37)'
+                                        }}
+                                    >
+                                        {/* Icon */}
+                                        <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+
             </div>
 
             {/* Main Content */}
-            <div className="relative z-20 flex flex-col items-center text-center max-w-6xl px-4 space-y-10">
+            <div className="relative z-20 flex flex-col items-center text-center max-w-6xl px-4 space-y-4">
                 <div>
                     <div className="relative px-4 py-2 border border-[#181825] bg-[#01010d] text-xs md:text-sm text-white font-medium tracking-wide flex items-center gap-2">
                         {/* Left Border */}
@@ -193,6 +371,7 @@ export default function Hero() {
                         <div className="absolute inset-0 border border-[#181825] z-0"></div>
 
                         {/* Decor: Corners (Outer) */}
+
                         <motion.div
                             className="absolute -top-2 -left-2 w-2 h-2 z-20"
                             animate={{ x: [0, -4, 0, 0], y: [0, -4, 0, 0] }}
@@ -254,7 +433,7 @@ export default function Hero() {
 
                     {/* Wordmark */}
                     <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
-                        Twarimitswe
+                        Aaron
                     </h1>
                 </div>
 
@@ -271,99 +450,6 @@ export default function Hero() {
                         className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
                     >
 
-                        {/* Corner Animations */}
-                        {/* Top Left */}
-                        <motion.div
-                            className="absolute -top-1 -left-1 w-2 h-2 z-20"
-                            variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
-                                hover: {
-                                    opacity: 1,
-                                    x: [0, -4, 0, 0],
-                                    y: [0, -4, 0, 0],
-                                    transition: {
-                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        opacity: { duration: 0.2 }
-                                    }
-                                }
-                            }}
-                        >
-                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        {/* Top Right */}
-                        <motion.div
-                            className="absolute -top-1 -right-1 w-2 h-2 z-20"
-                            variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
-                                hover: {
-                                    opacity: 1,
-                                    x: [0, 4, 0, 0],
-                                    y: [0, -4, 0, 0],
-                                    transition: {
-                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        opacity: { duration: 0.2 }
-                                    }
-                                }
-                            }}
-                        >
-                            <div className="absolute top-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        {/* Bottom Left */}
-                        <motion.div
-                            className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
-                            variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
-                                hover: {
-                                    opacity: 1,
-                                    x: [0, -4, 0, 0],
-                                    y: [0, 4, 0, 0],
-                                    transition: {
-                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        opacity: { duration: 0.2 }
-                                    }
-                                }
-                            }}
-                        >
-                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-                        {/* Bottom Right */}
-                        <motion.div
-                            className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
-                            variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
-                                hover: {
-                                    opacity: 1,
-                                    x: [0, 4, 0, 0],
-                                    y: [0, 4, 0, 0],
-                                    transition: {
-                                        x: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        y: { duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity },
-                                        opacity: { duration: 0.2 }
-                                    }
-                                }
-                            }}
-                        >
-                            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-[#f0f0ff]"></div>
-                            <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
-                        </motion.div>
-
-                        <span className="relative flex items-center justify-center gap-3 font-medium text-lg">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.13 8.13 0 01-7.89-6.316C2.26 12.016 4.965 7 9.5 7h4c4.535 0 7.24 5.016 4.39 6.684A8.13 8.13 0 0121 12z"></path></svg>
-                            Hire Engineer
-                        </span>
-                    </motion.button>
-
-                    <motion.button
-                        whileHover="hover"
-                        initial="initial"
-                        className="hidden md:flex relative group items-center cursor-pointer gap-2 px-6 py-3 text-sm transition-colors border border-[#b8b8ff]/40 bg-[radial-gradient(100%_150%_at_50%_50%,#01010d_0%,#181825_100%)] shadow-[inset_0px_0px_12px_0px_#69699666] text-white"
-                    >
                         {/* Corner Animations */}
                         {/* Top Left */}
                         <motion.div

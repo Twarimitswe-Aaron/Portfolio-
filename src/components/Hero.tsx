@@ -297,14 +297,14 @@ export default function Hero() {
 
                 {/* Google Meet Card (Relocated Position) */}
                 <div
-                    className="absolute top-[calc(50%-100px)] left-[calc(50%-550px)] flex flex-row items-end w-[300px] gap-2 opacity-90 z-20"
+                    className="absolute top-[calc(50%-100px)] left-[calc(50%-550px)] flex flex-row items-center w-[300px] gap-2 opacity-90 z-20"
                 >
                     {/* Framer Wrapper */}
-                    <div className="flex flex-row items-end h-full w-full gap-2">
+                    <div className="flex flex-row items-center h-full w-full gap-2">
                         {/* Text Container */}
                         <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
                             <div
-                                className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2  bg-[#181825]/60"
+                                className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2  bg-transparent"
                                 style={{
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
@@ -342,10 +342,10 @@ export default function Hero() {
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 50, opacity: 0, transition: { duration: 0.5 } }}
                             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                            className="absolute top-[calc(50%+50px)] right-[calc(50%-550px)] flex flex-row items-end w-[300px] gap-2 z-20"
+                            className="absolute top-[calc(50%+50px)] right-[calc(50%-550px)] flex flex-row items-center w-[300px] gap-2 z-20"
                             style={{ filter: 'blur(2px)' }}
                         >
-                            <div className="flex flex-row items-end h-full w-full gap-2">
+                            <div className="flex flex-row items-center h-full w-full gap-2">
                                 {/* Icon Box (Left for Right Card) */}
                                 <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
                                     <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
@@ -361,7 +361,7 @@ export default function Hero() {
                                 {/* Text Container */}
                                 <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
                                     <div
-                                        className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-[#181825]/60"
+                                        className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-transparent"
                                         style={{
                                             borderWidth: '1px',
                                             borderStyle: 'solid',
@@ -442,14 +442,14 @@ export default function Hero() {
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: 20, opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
                                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                                className="relative flex flex-row items-end w-[300px] gap-2 ml-4"
+                                className="relative flex flex-row items-center w-[300px] gap-2 ml-4"
                             >
                                 {/* Framer Wrapper */}
-                                <div className="flex flex-row items-end h-full w-full gap-2">
+                                <div className="flex flex-row items-center h-full w-full gap-2">
                                     {/* Text Container */}
                                     <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
                                         <div
-                                            className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-[#181825]/60"
+                                            className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-transparent"
                                             style={{
                                                 borderWidth: '1px',
                                                 borderStyle: 'solid',

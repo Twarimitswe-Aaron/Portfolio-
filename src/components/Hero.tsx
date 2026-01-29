@@ -33,6 +33,12 @@ export default function Hero() {
         exit: { opacity: 0, x: 20, transition: { duration: 0.2 } }
     };
 
+    const itemVariantsInverted = {
+        hidden: { opacity: 0, x: 20 },
+        visible: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } },
+        exit: { opacity: 0, x: -20, transition: { duration: 0.2 } }
+    };
+
     useEffect(() => {
         const runAnimationCycle = () => {
             // 1. Start: Star, Dots, and Icons appear
@@ -227,6 +233,68 @@ export default function Hero() {
                     </AnimatePresence>
                 </motion.div>
 
+                {/* Lower Left Blurred Icons (Inverted Flow) */}
+                <motion.div
+                    className="absolute bottom-32 left-[10%] z-0 opacity-60"
+                    style={{ filter: 'blur(2px)' }}
+                    animate={{ x: [20, -20, 20] }}
+                    transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
+                >
+                    <AnimatePresence mode="wait">
+                        {showIcons && (
+                            <motion.div
+                                key="icons-container-inverted"
+                                className="flex gap-6"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                            >
+                                {/* Mail */}
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Figma */}
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Notion */}
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Spiral/Orb */}
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
+                                    </svg>
+                                </motion.div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+
                 {/* Google Meet Card (Relocated Position) */}
                 <div
                     className="absolute top-[calc(50%-100px)] left-[calc(50%-550px)] flex flex-row items-end w-[300px] gap-2 opacity-90 z-20"
@@ -361,6 +429,8 @@ export default function Hero() {
                                 </motion.div>
                             )}
                         </AnimatePresence>
+
+
                     </div>
 
                     {/* Duplicate Google Meet Card (Animated) */}

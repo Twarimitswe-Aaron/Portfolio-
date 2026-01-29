@@ -394,9 +394,13 @@ export default function Hero() {
                                     animate={{ scale: 1, opacity: 1, rotate: 0 }}
                                     exit={{ scale: 0, opacity: 0, rotate: 45, transition: { duration: 0.3 } }}
                                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                    className="relative w-10 h-10 -top-[4px]"
+                                    className="relative w-8 h-8 -top-[4px] bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center"
                                 >
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <div className="absolute -top-px -left-px w-1 h-1 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1 h-1 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1 h-1 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1 h-1 border-b border-r border-white" />
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 0L14 9L23 12L14 15L12 24L10 15L1 12L10 9L12 0Z" fill="#f0f0ff" fillOpacity="0.8" />
                                     </svg>
                                 </motion.div>

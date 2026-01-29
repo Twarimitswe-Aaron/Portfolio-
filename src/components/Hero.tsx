@@ -7,12 +7,38 @@ export default function Hero() {
     const [showDuplicate, setShowDuplicate] = useState(false);
     const [showStar, setShowStar] = useState(false);
     const [showDots, setShowDots] = useState(false);
+    const [showIcons, setShowIcons] = useState(false);
+    const [showRightCard, setShowRightCard] = useState(false);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                staggerChildren: 0.1,
+                staggerDirection: -1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } },
+        exit: { opacity: 0, x: 20, transition: { duration: 0.2 } }
+    };
 
     useEffect(() => {
         const runAnimationCycle = () => {
-            // 1. Start: Star and Dots appear
+            // 1. Start: Star, Dots, and Icons appear
             setShowStar(true);
             setShowDots(true);
+            setShowIcons(true);
 
             // 2. Dots disappear, Card appears (after 1s)
             const cardTimer = setTimeout(() => {
@@ -30,7 +56,22 @@ export default function Hero() {
                 setShowStar(false);
             }, 3500);
 
-            return { cardTimer, hideCardTimer, hideStarTimer };
+            // 5. Right Card appears (staggered, e.g. at 2s)
+            const rightCardTimer = setTimeout(() => {
+                setShowRightCard(true);
+            }, 2000);
+
+            // 6. Right Card disappears (at 4s)
+            const hideRightCardTimer = setTimeout(() => {
+                setShowRightCard(false);
+            }, 4000);
+
+            // 7. Icons disappear (after 4.5s)
+            const hideIconsTimer = setTimeout(() => {
+                setShowIcons(false);
+            }, 4500);
+
+            return { cardTimer, hideCardTimer, hideStarTimer, hideIconsTimer, rightCardTimer, hideRightCardTimer };
         };
 
         const initialTimer = setTimeout(() => {
@@ -46,6 +87,9 @@ export default function Hero() {
                     clearTimeout(timers.cardTimer);
                     clearTimeout(timers.hideCardTimer);
                     clearTimeout(timers.hideStarTimer);
+                    clearTimeout(timers.hideIconsTimer);
+                    clearTimeout(timers.rightCardTimer);
+                    clearTimeout(timers.hideRightCardTimer);
                 }
                 clearInterval(loopInterval);
             };
@@ -124,50 +168,63 @@ export default function Hero() {
 
                 {/* Floating Icons Row (Top Right) */}
                 <motion.div
-                    className="absolute top-64 right-[10%] flex gap-6 z-0 opacity-60"
+                    className="absolute top-64 right-[10%] z-0 opacity-60"
                     animate={{ x: [-20, 20, -20] }}
                     transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
                 >
-                    {/* Mail */}
-                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
-                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
-                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
-                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
-                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    {/* Figma */}
-                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
-                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
-                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
-                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
-                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
-                        </svg>
-                    </div>
-                    {/* Notion */}
-                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
-                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
-                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
-                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
-                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
-                        </svg>
-                    </div>
-                    {/* Spiral/Orb */}
-                    <div className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                        <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white" />
-                        <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-white" />
-                        <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-white" />
-                        <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white" />
-                        <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
-                        </svg>
-                    </div>
+                    <AnimatePresence mode="wait">
+                        {showIcons && (
+                            <motion.div
+                                key="icons-container"
+                                className="flex gap-6"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                            >
+                                {/* Mail */}
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Figma */}
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Notion */}
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
+                                    </svg>
+                                </motion.div>
+                                {/* Spiral/Orb */}
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
+                                    </svg>
+                                </motion.div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </motion.div>
 
                 {/* Google Meet Card (Relocated Position) */}
@@ -195,23 +252,65 @@ export default function Hero() {
                         </div>
 
                         {/* Icon Box */}
-                        <div
-                            className="relative my-auto flex  items-center gap-1.5 p-2  bg-[#181825]/80 backdrop-blur-md opacity-100 transform-none"
-                            style={{
-                                borderWidth: '1px',
-                                borderStyle: 'solid',
-                                borderColor: 'rgb(24, 24, 37)'
-                            }}
-                        >
+                        <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                            <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                            <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                            <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                            <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
                             {/* Icon */}
                             <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                             </svg>
-
-
                         </div>
                     </div>
                 </div>
+
+                {/* Right Side Mirrored Card (Aaron) */}
+                <AnimatePresence>
+                    {showRightCard && (
+                        <motion.div
+                            key="right-card"
+                            initial={{ x: 50, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 50, opacity: 0, transition: { duration: 0.5 } }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                            className="absolute top-[calc(50%+50px)] right-[calc(50%-550px)] flex flex-row items-end w-[300px] gap-2 z-20"
+                            style={{ filter: 'blur(2px)' }}
+                        >
+                            <div className="flex flex-row items-end h-full w-full gap-2">
+                                {/* Icon Box (Left for Right Card) */}
+                                <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    {/* Icon - Using same icon for consistency or snippet's */}
+                                    <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                </div>
+
+                                {/* Text Container */}
+                                <div className="relative transform-none items-center flex opacity-100 flex-shrink-0">
+                                    <div
+                                        className="relative backdrop-blur-[5px] opacity-100 max-w-[250px] transform-none p-2 bg-[#181825]/60"
+                                        style={{
+                                            borderWidth: '1px',
+                                            borderStyle: 'solid',
+                                            borderColor: 'rgba(40, 40, 61, 0.8)'
+                                        }}
+                                    >
+                                        <div className="opacity-70 transform-none">
+                                            <p className="text-xs text-[#0099ff] decoration-[#0099ff] leading-relaxed">
+                                                <span className="text-gray-300">Set up a Google Meet with Aaron at 2:00 PM on Thursday.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Animated Duplicate Group (Flex Container with Fixed Width Star) */}
                 <div className="absolute top-[calc(50%-20px)] left-[calc(50%-610px)] flex flex-row items-center gap-0 z-10 pointer-events-none">
@@ -296,14 +395,11 @@ export default function Hero() {
                                     </div>
 
                                     {/* Icon Box */}
-                                    <div
-                                        className="relative my-auto flex items-center gap-1.5 p-2 bg-[#181825]/80 backdrop-blur-md opacity-100 transform-none"
-                                        style={{
-                                            borderWidth: '1px',
-                                            borderStyle: 'solid',
-                                            borderColor: 'rgb(24, 24, 37)'
-                                        }}
-                                    >
+                                    <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                                        <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
+                                        <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
+                                        <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
+                                        <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
                                         {/* Icon */}
                                         <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
@@ -537,6 +633,15 @@ export default function Hero() {
                     </motion.button>
                 </div>
             </div>
+
+            {/* Bottom Blur Overlay */}
+            <div
+                className="absolute bottom-0 left-0 w-full h-[200px] backdrop-blur-[10px] z-20 pointer-events-none"
+                style={{
+                    maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)'
+                }}
+            />
         </section>
     );
 }

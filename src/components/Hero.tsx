@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
@@ -9,6 +9,86 @@ export default function Hero() {
     const [showDots, setShowDots] = useState(false);
     const [showIcons, setShowIcons] = useState(false);
     const [showRightCard, setShowRightCard] = useState(false);
+
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let animationFrameId: number;
+        let flies: Fly[] = [];
+
+        interface Fly {
+            x: number;
+            y: number;
+            size: number;
+            speedX: number;
+            speedY: number;
+            angle: number;
+            angleSpeed: number;
+        }
+
+        const createFlies = () => {
+            const flyCount = 200; // Increased count per request
+            flies = [];
+            for (let i = 0; i < flyCount; i++) {
+                flies.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height, // Full screen (delocalized)
+                    size: Math.random() * 1 + 0.5, // Thin but visible (0.5 to 1.5)
+                    speedX: (Math.random() - 0.5) * 1.5,
+                    speedY: (Math.random() - 0.5) * 1.5,
+                    angle: Math.random() * Math.PI * 2,
+                    angleSpeed: (Math.random() - 0.5) * 0.1
+                });
+            }
+        };
+
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createFlies();
+        };
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            flies.forEach(fly => {
+                // Update position with some erratic movement
+                fly.angle += fly.angleSpeed;
+                fly.x += fly.speedX + Math.cos(fly.angle) * 0.5;
+                fly.y += fly.speedY + Math.sin(fly.angle) * 0.5;
+
+                // Wrap around screen horizontally
+                if (fly.x < -10) fly.x = canvas.width + 10;
+                if (fly.x > canvas.width + 10) fly.x = -10;
+
+                // Full screen wrap for Y (delocalized)
+                if (fly.y < -10) fly.y = canvas.height + 10;
+                if (fly.y > canvas.height + 10) fly.y = -10;
+
+                // Draw fly (rect for sharpness)
+                ctx.fillStyle = `rgba(220, 220, 255, ${Math.random() * 0.2 + 0.8})`; // Very strong opacity (0.8-1.0)
+                ctx.fillRect(fly.x, fly.y, fly.size, fly.size); // Sharp square
+            });
+
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', resizeCanvas);
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, []);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -106,6 +186,13 @@ export default function Hero() {
 
     return (
         <section className="relative w-full min-h-screen bg-[#01010d] text-white overflow-hidden flex flex-col items-center justify-center py-20" style={{ fontFamily: '"IBM Plex Sans", "IBM Plex Sans Placeholder", sans-serif' }}>
+
+            {/* Flying Dots Canvas */}
+            <canvas
+                ref={canvasRef}
+                className="absolute inset-0 z-0 pointer-events-none"
+                style={{ opacity: 1 }} // Subtle global opacity
+            />
 
             {/* Radial Light - Deep Blue Power */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#02021a]/40 rounded-full blur-[100px] z-0 pointer-events-none" />
@@ -347,7 +434,7 @@ export default function Hero() {
                         >
                             <div className="flex flex-row items-center h-full w-full gap-2">
                                 {/* Icon Box (Left for Right Card) */}
-                                <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                                <div className="relative w-7 h-7 bg-transparent border border-[rgba(40, 40, 61, 0.8)] backdrop-blur-md flex items-center justify-center flex-shrink-0">
                                     <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
                                     <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
                                     <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />

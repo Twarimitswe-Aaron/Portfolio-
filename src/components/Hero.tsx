@@ -276,41 +276,41 @@ export default function Hero() {
                                 exit="exit"
                             >
                                 {/* Mail */}
-                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </motion.div>
                                 {/* Figma */}
-                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
                                     </svg>
                                 </motion.div>
                                 {/* Notion */}
-                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
                                     </svg>
                                 </motion.div>
                                 {/* Spiral/Orb */}
-                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariants} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
                                     </svg>
@@ -338,41 +338,41 @@ export default function Hero() {
                                 exit="exit"
                             >
                                 {/* Mail */}
-                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </motion.div>
                                 {/* Figma */}
-                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M12 2a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm0 6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3zm0 6a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3zm-6-6a3 3 0 00-3 3 3 3 0 003 3h3v-6H9a3 3 0 00-3 3zm0 6h3v6a3 3 0 01-3-3 3 3 0 010-3z" />
                                     </svg>
                                 </motion.div>
                                 {/* Notion */}
-                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M4 4h16v16H4V4zm4 3v9h1.5l4.5-7v7h1.5V7h-1.5l-4.5 7V7H8z" />
                                     </svg>
                                 </motion.div>
                                 {/* Spiral/Orb */}
-                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <motion.div variants={itemVariantsInverted} className="relative w-12 h-12 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                         <path strokeLinecap="square" strokeLinejoin="miter" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-4c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
                                     </svg>
@@ -395,7 +395,7 @@ export default function Hero() {
                                 style={{
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: 'rgba(40, 40, 61, 0.8)'
+                                    borderColor: '#181825'
                                 }}
                             >
                                 <div className="opacity-70 transform-none">
@@ -407,11 +407,11 @@ export default function Hero() {
                         </div>
 
                         {/* Icon Box */}
-                        <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
-                            <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                            <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                            <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                            <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                        <div className="relative w-10 h-10 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                            <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                            <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                            <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                            <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                             {/* Icon */}
                             <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
@@ -434,11 +434,11 @@ export default function Hero() {
                         >
                             <div className="flex flex-row items-center h-full w-full gap-2">
                                 {/* Icon Box (Left for Right Card) */}
-                                <div className="relative w-7 h-7 bg-transparent border border-[rgba(40, 40, 61, 0.8)] backdrop-blur-md flex items-center justify-center flex-shrink-0">
-                                    <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                <div className="relative w-7 h-7 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     {/* Icon - Using same icon for consistency or snippet's */}
                                     <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
@@ -452,7 +452,7 @@ export default function Hero() {
                                         style={{
                                             borderWidth: '1px',
                                             borderStyle: 'solid',
-                                            borderColor: 'rgba(40, 40, 61, 0.8)'
+                                            borderColor: '#181825'
                                         }}
                                     >
                                         <div className="opacity-70 transform-none">
@@ -471,7 +471,7 @@ export default function Hero() {
                 <div className="absolute top-[calc(50%-20px)] left-[calc(50%-610px)] flex flex-row items-center gap-0 z-10 pointer-events-none">
 
                     {/* Fixed Width Star Container (Reserves Space) */}
-                    <div className="relative w-[60px] h-10 flex-shrink-0 flex items-center justify-center">
+                    <div className="relative w-[60px] min-h-15 flex-shrink-0 flex items-center justify-center">
                         {/* Animated Star Decoration */}
                         <AnimatePresence>
                             {showStar && (
@@ -481,12 +481,12 @@ export default function Hero() {
                                     animate={{ scale: 1, opacity: 1, rotate: 0 }}
                                     exit={{ scale: 0, opacity: 0, rotate: 45, transition: { duration: 0.3 } }}
                                     transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                                    className="relative w-8 h-8 -top-[4px] bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center"
+                                    className="relative w-7 h-7 -top-[4px] bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center"
                                 >
-                                    <div className="absolute -top-px -left-px w-1 h-1 border-t border-l border-white" />
-                                    <div className="absolute -top-px -right-px w-1 h-1 border-t border-r border-white" />
-                                    <div className="absolute -bottom-px -left-px w-1 h-1 border-b border-l border-white" />
-                                    <div className="absolute -bottom-px -right-px w-1 h-1 border-b border-r border-white" />
+                                    <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                    <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 0L14 9L23 12L14 15L12 24L10 15L1 12L10 9L12 0Z" fill="#f0f0ff" fillOpacity="0.8" />
                                     </svg>
@@ -544,7 +544,7 @@ export default function Hero() {
                                             style={{
                                                 borderWidth: '1px',
                                                 borderStyle: 'solid',
-                                                borderColor: 'rgba(40, 40, 61, 0.8)'
+                                                borderColor: '#181825'
                                             }}
                                         >
                                             <div className="opacity-70 transform-none">
@@ -556,11 +556,11 @@ export default function Hero() {
                                     </div>
 
                                     {/* Icon Box */}
-                                    <div className="relative w-10 h-10 bg-transparent border border-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
-                                        <div className="absolute -top-px -left-px w-1.5 h-1.5 border-t border-l border-white" />
-                                        <div className="absolute -top-px -right-px w-1.5 h-1.5 border-t border-r border-white" />
-                                        <div className="absolute -bottom-px -left-px w-1.5 h-1.5 border-b border-l border-white" />
-                                        <div className="absolute -bottom-px -right-px w-1.5 h-1.5 border-b border-r border-white" />
+                                    <div className="relative w-10 h-10 bg-transparent border border-[#181825] backdrop-blur-md flex items-center justify-center flex-shrink-0">
+                                        <div className="absolute -top-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                        <div className="absolute -top-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
+                                        <div className="absolute -bottom-px -left-px w-0.5 h-0.5 bg-white rounded-full" />
+                                        <div className="absolute -bottom-px -right-px w-0.5 h-0.5 bg-white rounded-full" />
                                         {/* Icon */}
                                         <svg className="w-5 h-5 text-[#f0f0ff] opacity-100" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
@@ -573,6 +573,73 @@ export default function Hero() {
                 </div>
 
 
+            </div>
+
+            {/* Creative Corner Animations */}
+            <div className="absolute inset-0 pointer-events-none z-20">
+                {/* Top Left */}
+                <motion.div
+                    className="absolute top-20 left-8 md:top-32 md:left-12 opacity-40"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                >
+                    <div className="w-24 h-[1px] bg-gradient-to-r from-white/50 to-transparent" />
+                    <div className="w-[1px] h-24 bg-gradient-to-b from-white/50 to-transparent" />
+                    <motion.div
+                        className="absolute top-0 left-0 w-2 h-2 bg-white rounded-sm shadow-[0_0_10px_white]"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    />
+                </motion.div>
+
+                {/* Top Right */}
+                <motion.div
+                    className="absolute top-20 right-8 md:top-32 md:right-12 opacity-40"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.7 }}
+                >
+                    <div className="absolute top-0 right-0 w-24 h-[1px] bg-gradient-to-l from-white/50 to-transparent" />
+                    <div className="absolute top-0 right-0 w-[1px] h-24 bg-gradient-to-b from-white/50 to-transparent" />
+                    <motion.div
+                        className="absolute top-0 right-0 w-2 h-2 bg-white rounded-sm shadow-[0_0_10px_white]"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                    />
+                </motion.div>
+
+                {/* Bottom Left */}
+                <motion.div
+                    className="absolute bottom-8 left-8 md:bottom-12 md:left-12 opacity-40"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.9 }}
+                >
+                    <div className="absolute bottom-0 left-0 w-24 h-[1px] bg-gradient-to-r from-white/50 to-transparent" />
+                    <div className="absolute bottom-0 left-0 w-[1px] h-24 bg-gradient-to-t from-white/50 to-transparent" />
+                    <motion.div
+                        className="absolute bottom-0 left-0 w-2 h-2 bg-white rounded-sm shadow-[0_0_10px_white]"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    />
+                </motion.div>
+
+                {/* Bottom Right */}
+                <motion.div
+                    className="absolute bottom-8 right-8 md:bottom-12 md:right-12 opacity-40"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 1.1 }}
+                >
+                    <div className="absolute bottom-0 right-0 w-24 h-[1px] bg-gradient-to-l from-white/50 to-transparent" />
+                    <div className="absolute bottom-0 right-0 w-[1px] h-24 bg-gradient-to-t from-white/50 to-transparent" />
+                    <motion.div
+                        className="absolute bottom-0 right-0 w-2 h-2 bg-white rounded-sm shadow-[0_0_10px_white]"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+                    />
+                </motion.div>
             </div>
 
             {/* Main Content */}
@@ -665,6 +732,43 @@ export default function Hero() {
                             <div className="absolute bottom-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
                         </motion.div>
 
+                        {/* Mid-Point Animations (Synchronized) */}
+                        <motion.div
+                            className="absolute -top-2 left-1/2 -translate-x-1/2 w-2 h-2 z-20"
+                            animate={{ y: [0, -4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                        </motion.div>
+
+                        <motion.div
+                            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 z-20"
+                            animate={{ y: [0, 4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
+                        >
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-[#f0f0ff]"></div>
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#f0f0ff]"></div>
+                        </motion.div>
+
+                        <motion.div
+                            className="absolute top-1/2 -left-2 -translate-y-1/2 w-2 h-2 z-20"
+                            animate={{ x: [0, -4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
+                        >
+                            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 left-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
+                        <motion.div
+                            className="absolute top-1/2 -right-2 -translate-y-1/2 w-2 h-2 z-20"
+                            animate={{ x: [0, 4, 0, 0] }}
+                            transition={{ duration: 4, times: [0, 0.1, 0.2, 1], ease: "easeOut", repeat: Infinity }}
+                        >
+                            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-full h-[1px] bg-[#f0f0ff]"></div>
+                            <div className="absolute top-0 right-0 w-[1px] h-full bg-[#f0f0ff]"></div>
+                        </motion.div>
+
                         {/* Inner Active Container (Compact) */}
                         <div className="absolute inset-0 m-auto w-[75%] h-[75%]">
                             {/* Active Borders - 4 Layers */}
@@ -712,7 +816,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -top-1 -left-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
+                                initial: { opacity: 1, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, -4, 0, 0],
@@ -732,7 +836,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -top-1 -right-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
+                                initial: { opacity: 1, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, 4, 0, 0],
@@ -752,7 +856,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
+                                initial: { opacity: 1, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, -4, 0, 0],
@@ -772,7 +876,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 0, x: 0, y: 0 },
+                                initial: { opacity: 1, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, 4, 0, 0],

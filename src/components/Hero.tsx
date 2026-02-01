@@ -816,7 +816,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -top-1 -left-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 1, x: 0, y: 0 },
+                                initial: { opacity: 0, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, -4, 0, 0],
@@ -834,9 +834,9 @@ export default function Hero() {
                         </motion.div>
                         {/* Top Right */}
                         <motion.div
-                            className="absolute -top-1 -right-1 w-2 h-2 z-20"
+                            className="absolute  hover:block -top-1 -right-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 1, x: 0, y: 0 },
+                                initial: { opacity: 0, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, 4, 0, 0],
@@ -856,7 +856,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -bottom-1 -left-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 1, x: 0, y: 0 },
+                                initial: { opacity: 0, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, -4, 0, 0],
@@ -876,7 +876,7 @@ export default function Hero() {
                         <motion.div
                             className="absolute -bottom-1 -right-1 w-2 h-2 z-20"
                             variants={{
-                                initial: { opacity: 1, x: 0, y: 0 },
+                                initial: { opacity: 0, x: 0, y: 0 },
                                 hover: {
                                     opacity: 1,
                                     x: [0, 4, 0, 0],
@@ -907,6 +907,11 @@ export default function Hero() {
                     WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)'
                 }}
             />
+
+            {/* Bottom Border Matching WhoWeAre Width */}
+            <div className="absolute bottom-0 left-0 w-full flex justify-center z-30">
+                <div className="w-full border-b border-[#181825]"></div>
+            </div>
         </section>
     );
 }

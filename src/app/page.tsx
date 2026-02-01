@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import WhoWeAre from '@/components/WhoWeAre';
 import PricingSection from '@/components/PricingSection';
 import BlogSection from '@/components/BlogSection';
 import AboutSection from '@/components/AboutSection';
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <WhoWeAre />
         <PricingSection />
         <BlogSection />
         <AboutSection />
